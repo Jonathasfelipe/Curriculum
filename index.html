@@ -15,6 +15,9 @@
             --text: #34495e;
             --gray: #95a5a6;
             --bg: #f8f9fa;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
         }
         
         * {
@@ -193,7 +196,7 @@
             margin-bottom: 25px;
         }
 
-        /* Competências */
+        /* Competências com barras de progresso */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -208,24 +211,67 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
-        .skills-list {
-            list-style: none;
-        }
-
-        .skills-list li {
+        .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 12px;
             padding: 8px 0;
             border-bottom: 1px dashed #ecf0f1;
-            display: flex;
-            align-items: center;
         }
 
-        .skills-list li:before {
-            content: '▹';
-            margin-right: 12px;
-            color: var(--secondary);
-            font-weight: bold;
+        .skill-name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .skill-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            background: var(--light);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .skill-bar-container {
+            width: 60%;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 4px 0;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        .skill-percentage {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* Cores das barras de progresso */
+        .progress-90 { background: linear-gradient(90deg, var(--success), #27ae60); width: 90%; }
+        .progress-85 { background: linear-gradient(90deg, var(--success), #2ecc71); width: 85%; }
+        .progress-80 { background: linear-gradient(90deg, #3498db, var(--secondary)); width: 80%; }
+        .progress-75 { background: linear-gradient(90deg, #3498db, #2980b9); width: 75%; }
+        .progress-70 { background: linear-gradient(90deg, var(--warning), #f39c12); width: 70%; }
+        .progress-65 { background: linear-gradient(90deg, var(--warning), #e67e22); width: 65%; }
 
         /* Experiência */
         .timeline {
@@ -340,6 +386,10 @@
             font-weight: 500;
         }
 
+        .status-dev {
+            background: var(--warning);
+        }
+
         /* Rodapé */
         footer {
             text-align: center;
@@ -376,6 +426,10 @@
             .contact-info {
                 grid-template-columns: 1fr;
             }
+            
+            .skill-bar-container {
+                width: 50%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -390,6 +444,10 @@
             body {
                 padding: 10px;
             }
+            
+            .skill-bar-container {
+                width: 40%;
+            }
         }
     </style>
 </head>
@@ -399,12 +457,12 @@
             <div class="header-content">
                 <div class="profile-img-container">
                     <!-- ATENÇÃO: Substitua "foto.jpg" pelo caminho correto da sua foto -->
-                    <img src="IMG_20240508_222755_930.webp" alt="Foto de Jonathas Felipe" class="profile-img" onerror="this.style.display='none'; document.getElementById('fallback').style.display='flex';">
+                    <img src="foto.jpg" alt="Foto de Jonathas Felipe" class="profile-img" onerror="this.style.display='none'; document.getElementById('fallback').style.display='flex';">
                     <div id="fallback" class="profile-fallback" style="display: none;">JF</div>
                 </div>
                 <div class="header-text">
                     <h1>Jonathas Felipe</h1>
-                    <p class="subtitle">Desenvolvedor Front-End | Transição de Carreira</p>
+                    <p class="subtitle">Desenvolvedor Front-End e Back-End Junior | Em busca de oportunidades na área de Tecnologia da Informação</p>
                     <div class="contact-info">
                         <div class="contact-item">
                             <i>📍</i> Suzano, São Paulo
@@ -432,43 +490,141 @@
             <section>
                 <h2>Objetivo</h2>
                 <div class="objective">
-                    Atuar como <strong>Desenvolvedor Front-End</strong> ou em posição de <strong>suporte técnico</strong>, aplicando minhas habilidades em <strong>HTML, CSS, JavaScript</strong> e <strong>Git</strong> comprovadas pelo portfólio de projetos. Busco minha primeira oportunidade formal em TI para contribuir com soluções práticas e evoluir profissionalmente na área de tecnologia.
+                    Atuar como <strong>Desenvolvedor Front-End ou Back-End Junior</strong>, aplicando minhas habilidades em <strong>HTML, CSS, JavaScript, Git, integração de APIs e versionamento de banco de dados</strong> comprovadas por projetos como o Elliot IA 3.3(em Andamento). Busco minha primeira oportunidade formal em TI para contribuir com soluções práticas, desenvolver aplicações escaláveis e evoluir profissionalmente na área de tecnologia.
                 </div>
             </section>
             
             <section>
                 <h2>Resumo Profissional</h2>
                 <div class="summary">
-                    Profissional em transição de carreira, saindo de uma sólida experiência em <strong>logística, expedição e atendimento ao cliente</strong> para a área de <strong>tecnologia da informação</strong>. Possuo conhecimentos em desenvolvimento web, versionamento de código e criação de interfaces, demonstrados através de projetos práticos e publicados. Combino <strong>proatividade, organização</strong> e <strong>vontade de aprender</strong> com competências técnicas em front-end, buscando uma oportunidade para agregar valor e crescer junto à empresa.
+                    Profissional em transição de carreira, saindo de uma sólida experiência em <strong>logística, expedição e atendimento ao cliente</strong> para a área de <strong>tecnologia da informação</strong>. Possuo conhecimentos basico e consolidados de anos de prática desde informatica basica e montagem e desmontagem de hardware a desenvolvimento web, versionamento de código e criação de interfaces, demonstrados através de projetos práticos e publicados. Atualmente estou estudando sozinho e desenvolvendo o projeto <strong>Elliot IA 3.3</strong> com integração de APIs e versionamento de banco de dados onde uso e aprendo com IA's gratuitas como CHATGPT5.1 - DEEPSEEK e como compilador TRAE E VSCODE Combino <strong>proatividade, organização</strong> e <strong>vontade de aprender</strong> com competências técnicas em front-ou-back-End buscando uma oportunidade para agregar valor e crescer junto à empresa.
                 </div>
             </section>
             
             <section>
-                <h2>Competências</h2>
-                <div class="skills-container">
-                    <div class="skills-category">
-                        <h3>Técnicas</h3>
-                        <ul class="skills-list">
-                            <li>HTML5, CSS3, JavaScript (ES6+)</li>
-                            <li>Git, GitHub, GitHub Pages</li>
-                            <li>Design Responsivo</li>
-                            <li>UX/UI Básica</li>
-                            <li>SEO Básico</li>
-                            <li>TOTVS, CRM</li>
-                        </ul>
-                    </div>
-                    <div class="skills-category">
-                        <h3>Comportamentais</h3>
-                        <ul class="skills-list">
-                            <li>Atendimento ao Cliente</li>
-                            <li>Gestão de Tempo e Organização</li>
-                            <li>Trabalho em Equipe</li>
-                            <li>Comunicação Eficaz</li>
-                            <li>Aprendizado Contínuo</li>
-                        </ul>
-                    </div>
+    <h2>Competências Corporativas</h2>
+    <div class="skills-container">
+        <!-- Coluna Técnicas -->
+        <div class="skills-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>💻</i>
                 </div>
-            </section>
+                <h3>Técnicas</h3>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>🌐</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Tecnologias Web</h4>
+                    <p>HTML, CSS, JavaScript, Git, GitHub, MySQL, PHP, Python, React, Node.js, Express, MongoDB</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>💼</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Sistemas Corporativos</h4>
+                    <p>TOTVS, CRM, Sistemas de Gestão Empresarial</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>🔧</i>
+                </div>
+                <div class="competence-content">
+                    <h4> Ferramentas de Desenvolvimento</h4>
+                    <p>Visual Studio Code, IntelliJ IDEA, Eclipse, Postman, MySQL Workbench</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>📚</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Documentação</h4>
+                    <p>Elaboração de documentação técnica e de usuário</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Coluna Comportamentais -->
+        <div class="skills-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>👥</i>
+                </div>
+                <h3>Comportamentais</h3>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>🤝</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Atendimento ao Cliente</h4>
+                    <p>Experiência em atendimento direto ao cliente e suporte técnico</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>⏰</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Gestão de Tempo</h4>
+                    <p>Organização eficiente de tarefas e prazos em ambiente corporativo</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>👨‍💼</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Trabalho em Equipe</h4>
+                    <p>Colaboração em equipes multidisciplinares e ambientes corporativos</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>💬</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Comunicação</h4>
+                    <p>Comunicação clara em ambientes profissionais e técnicos</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>📈</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Adaptabilidade</h4>
+                    <p>Capacidade de aprendizado rápido e adaptação a novos processos</p>
+                </div>
+            </div>
+            
+            <div class="competence-item">
+                <div class="competence-icon">
+                    <i>🔍</i>
+                </div>
+                <div class="competence-content">
+                    <h4>Solução de Problemas</h4>
+                    <p>Abordagem prática para resolver desafios do dia a dia corporativo</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
             
             <section>
                 <h2>Experiência Profissional</h2>
@@ -496,90 +652,966 @@
                 </div>
             </section>
             
+            
+            
             <section>
-                <h2>Projetos</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-icon">📖</div>
-                        <h3>Blog Elliot — Reflexões e Tecnologia</h3>
-                        <p>Blog pessoal com estrutura e identidade visual totalmente customizadas, contendo artigos autorais sobre tecnologia, animes e infância.</p>
-                        <p><strong>Tecnologias:</strong> HTML, CSS, JavaScript, Design Responsivo.</p>
-                        <div class="project-links">
-                            <a href="https://jonathasfelipe.github.io/Elliot/index.html" target="_blank" class="btn btn-primary">Visitar Blog</a>
-                            <a href="https://jonathasfelipe.github.io/Elliot/tecnologia.html" target="_blank" class="btn">Tecnologia</a>
-                        </div>
+    <h2>Formação e Cursos</h2>
+    <div class="education-container">
+        <!-- Formação Acadêmica -->
+        <div class="education-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>🎓</i>
+                </div>
+                <h3>Formação Acadêmica</h3>
+            </div>
+            <div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Ensino Médio Completo</strong>
+                        <span class="edu-institution">E.E Sebastião Pereira Vidal</span>
                     </div>
-                    
-                    <div class="project-card">
-                        <div class="project-icon">🤖</div>
-                        <h3>Jornada de Aprendizado em IA</h3>
-                        <p>Página interativa documentando meu progresso inicial em Inteligência Artificial e Machine Learning.</p>
-                        <p><strong>Tecnologias:</strong> HTML, CSS, JavaScript.</p>
-                        <div class="project-links">
-                            <a href="https://jonathasfelipe.github.io/Eliiot-IA-project" target="_blank" class="btn btn-primary">Ver Projeto</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-icon">🪐</div>
-                        <h3>Sistema Solar Interativo</h3>
-                        <p>Modelo interativo do sistema solar com animações CSS e informações detalhadas sobre os planetas.</p>
-                        <p><strong>Tecnologias:</strong> HTML, CSS, JavaScript (Manipulação de DOM).</p>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="btn">Em Breve</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-icon">🎮</div>
-                        <h3>Jogo Tron (Light Cycles)</h3>
-                        <p>Implementação do clássico jogo Tron com controles por toque e modo single-player contra IA básica.</p>
-                        <p><strong>Tecnologias:</strong> HTML5 Canvas, CSS, JavaScript (Lógica de Jogo).</p>
-                        <div class="project-links">
-                            <a href="#" target="_blank" class="btn">Em Breve</a>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card">
-                        <div class="project-icon">👾</div>
-                        <h3>Space Invaders Moderno <span class="status">Em Desenvolvimento</span></h3>
-                        <p>Releitura moderna do clássico Space Invaders, com sistema de tiros, efeitos visuais, trilha sonora e upgrades.</p>
-                        <p><strong>Tecnologias:</strong> HTML5 Canvas, CSS, JavaScript.</p>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
                     </div>
                 </div>
-            </section>
+                <div class="edu-details">
+                    <span class="edu-date">Concluído em 2017</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cursos Técnicos -->
+        <div class="education-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>💼</i>
+                </div>
+                <h3>Cursos Técnicos</h3>
+            </div>
             
-            <section>
-                <h2>Formação</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="date">Concluído em 2017</div>
-                        <h3>E.E Sebastião Pereira Vidal</h3>
-                        <p>Ensino Médio Completo</p>
+            <div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Assistente Administrativo</strong>
+                        <span class="edu-institution">Escotec</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
                     </div>
                 </div>
-            </section>
+                <div class="edu-details">
+                    <span class="edu-date">Concluído</span>
+                    <span class="edu-hours">Carga horária: 240h</span>
+                </div>
+            </div>
+<div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Informática Básica</strong>
+                        <span class="edu-institution">Escotec</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
+                    </div>
+                </div>
+                <div class="edu-details">
+                    <div class="modules">
+                        <div class="module">
+                            <span class="module-name">Pacote Office</span>
+                            <span class="module-status completed">✓ Concluído</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Montagem e Manutenção de Micros</strong>
+                        <span class="edu-institution">Escotec</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
+                    </div>
+                </div>
+                <div class="edu-details">
+                    <span class="edu-date">Concluído</span>
+                    <span class="edu-hours">Carga horária: 180h</span>
+                </div>
+            </div>
+
+            <div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Elétrica Básica</strong>
+                        <span class="edu-institution">SENAI</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
+                    </div>
+                </div>
+                <div class="edu-details">
+                    <span class="edu-date">Concluído em 2021</span>
+                    <span class="edu-hours">Carga horária: 160h</span>
+                </div>
+            </div>
+
+            <div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Treinamento de Expedição de Elite</strong>
+                        <span class="edu-institution">Itaquareia</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
+                    </div>
+                </div>
+                <div class="edu-details">
+                    <span class="edu-date">Concluído em 2022</span>
+                    <span class="edu-hours">Certificação em logística avançada</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desenvolvimento Web -->
+        <div class="education-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>💻</i>
+                </div>
+                <h3>Desenvolvimento Web</h3>
+            </div>
             
-            <section>
-                <h2>Cursos Complementares</h2>
-                <ul class="skills-list">
-                    <li><strong>Curso em Vídeo:</strong> HTML5 e CSS3 - Módulos 1 & 2 (Em Andamento)</li>
-                    <li><strong>Escotec:</strong> Assistente Administrativo, Montagem e Manutenção de Micros, Pacote Office (Concluídos)</li>
-                    <li><strong>SENAI:</strong> Elétrica Básica (Concluído em 2021)</li>
-                    <li><strong>Itaquareia:</strong> Curso de Expedição de Elite (Concluído em 2022)</li>
-                </ul>
-            </section>
+            <div class="education-item in-progress">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>HTML5 e CSS3</strong>
+                        <span class="edu-institution">Curso em Vídeo</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge in-progress">Em Andamento</span>
+                        <div class="progress-indicator">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="progress-text">65%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="edu-details">
+                    <div class="modules">
+                        <div class="module">
+                            <span class="module-name">Módulo 1: Fundamentos</span>
+                            <span class="module-status completed">✓ Concluído</span>
+                        </div>
+                        <div class="module">
+                            <span class="module-name">Módulo 2: Avançado</span>
+                            <span class="module-status in-progress">● Em Andamento</span>
+                        </div>
+                        <div class="module">
+                            <span class="module-name">Módulo 3: Projetos</span>
+                            <span class="module-status pending">○ Pendente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Workshops e Palestras -->
+        <div class="education-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>🎤</i>
+                </div>
+                <h3>Workshops e Palestras</h3>
+            </div>
             
-            <section>
-                <h2>Idiomas</h2>
-                <ul class="skills-list">
-                    <li><strong>Inglês:</strong> Básico</li>
-                </ul>
-            </section>
+            <div class="education-item completed">
+                <div class="edu-header">
+                    <div class="edu-title">
+                        <strong>Marketing Pessoal</strong>
+                        <span class="edu-institution">Palestra</span>
+                    </div>
+                    <div class="edu-status">
+                        <span class="status-badge completed">Concluído</span>
+                    </div>
+                </div>
+                <div class="edu-details">
+                    <span class="edu-date">Participação</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+    <h2>Conhecimentos Técnicos</h2>
+    <div class="skills-container">
+        
+        <!-- Conhecimentos em Informática -->
+        <div class="skills-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>💼</i>
+                </div>
+                <h3>Informática Corporativa</h3>
+            </div>
+            <div class="skill-grid">
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon">📊</div>
+                        Microsoft Excel
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <span class="skill-label">Intermediário</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon">👥</div>
+                        CRM
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <span class="skill-label">Intermediário</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon">🖥️</div>
+                        Windows
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <span class="skill-label">Intermediário</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon">📝</div>
+                        Microsoft Word
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <span class="skill-label">Básico</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon">📊</div>
+                        Microsoft PowerPoint
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <span class="skill-label">Básico</span>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <div class="skill-icon">🏢</div>
+                        TOTVS
+                    </div>
+                    <div class="skill-level">
+                        <div class="skill-dots">
+                            <span class="dot active"></span>
+                            <span class="dot active"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <span class="skill-label">Intermediário</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desenvolvimento Web -->
+        <div class="skills-category">
+            <div class="category-header">
+                <div class="category-icon">
+                    <i>💻</i>
+                </div>
+                <h3>Desenvolvimento Web</h3>
+            </div>
+            
+            <!-- Front-End -->
+            <div class="skill-subcategory">
+                <h4>Front-End</h4>
+                <div class="skill-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🌐</div>
+                            HTML5
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Avançado</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🎨</div>
+                            CSS3
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Avançado</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">⚡</div>
+                            JavaScript (ES6+)
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Intermediário</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back-End -->
+            <div class="skill-subcategory">
+                <h4>Back-End</h4>
+                <div class="skill-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🚀</div>
+                            Node.js
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🔌</div>
+                            Express.js
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banco de Dados -->
+            <div class="skill-subcategory">
+                <h4>Banco de Dados</h4>
+                <div class="skill-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🗄️</div>
+                            SQL
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">📊</div>
+                            MongoDB
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">💾</div>
+                            IndexedDB
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ferramentas & Versionamento -->
+            <div class="skill-subcategory">
+                <h4>Ferramentas</h4>
+                <div class="skill-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">📚</div>
+                            Git / GitHub
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Intermediário</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🌐</div>
+                            GitHub Pages
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Intermediário</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outras Tecnologias -->
+            <div class="skill-subcategory">
+                <h4>Outras Tecnologias</h4>
+                <div class="skill-grid">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">📱</div>
+                            PWA (Progressive Web Apps)
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🛡️</div>
+                            Segurança Web (XSS, CSRF, CORS)
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🎯</div>
+                            SEO Técnico
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Básico</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">⚛️</div>
+                            Design System
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Intermediário</span>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <div class="skill-icon">🎨</div>
+                            Variáveis CSS
+                        </div>
+                        <div class="skill-level">
+                            <div class="skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                                <span class="dot"></span>
+                            </div>
+                            <span class="skill-label">Intermediário</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Legenda -->
+    <div class="skills-legend">
+        <div class="legend-item">
+            <div class="legend-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="legend-text">
+                <span>1 ponto = Básico, 2 pontos = Intermediário, 3 pontos = Intermediário-Avançado, 4 pontos = Avançado, 5 pontos = Expert</span>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+      <section class="portfolio-section">
+    <h2>Portfólio de Projetos</h2>
+    <p class="section-subtitle">Projetos desenvolvidos durante meus estudos de desenvolvimento web</p>
+    
+    <!-- Filtro por categoria -->
+    <div class="portfolio-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="games">Jogos</button>
+        <button class="filter-btn" data-filter="web">Web Apps</button>
+        <button class="filter-btn" data-filter="creative">Criativos</button>
+        <button class="filter-btn" data-filter="learning">Aprendizado</button>
+    </div>
+    
+    <!-- Grid de projetos -->
+     <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="game-icon">🎯</div>
+                <h3>Página de Jogos</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Catálogo de jogos com interface moderna e responsiva</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">Design Responsivo</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/index4gamepage.html" target="_blank" class="btn-primary">
+                        <i>📱</i> Ver
+                    </a>
+                </div>
+            </div>
+        </div>
+    <div class="portfolio-grid">
+        
+        <!-- Jogos -->
+        <div class="project-card" data-category="games">
+            <div class="project-image">
+                <div class="game-icon">👾</div>
+                <h3>Space Invaders</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Releitura do clássico jogo Space Invaders com JavaScript puro</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Canvas</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/Spaceinvaders.html" target="_blank" class="btn-primary">
+                        <i>🎮</i> Jogar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="games">
+            <div class="project-image">
+                <div class="game-icon">⚡</div>
+                <h3>Runner Game</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Jogo de corrida infinita com obstáculos e pontuação</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Animações</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/Runner.html" target="_blank" class="btn-primary">
+                        <i>🎮</i> Jogar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="games">
+            <div class="project-image">
+                <div class="game-icon">🧩</div>
+                <h3>Tetris</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Implementação do clássico Tetris com controles por teclado</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Lógica de Jogo</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/Tetris.html" target="_blank" class="btn-primary">
+                        <i>🎮</i> Jogar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Web Apps -->
+        <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="game-icon">🎹</div>
+                <h3>Piano Virtual</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Piano interativo com teclas sonoras e controle por mouse/teclado</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Audio API</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/Piano.html" target="_blank" class="btn-primary">
+                        <i>🎵</i> Tocar
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="game-icon">🛒</div>
+                <h3>Loja Online</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Página de produto com carrinho de compras interativo</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">E-commerce</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/tenis.html" target="_blank" class="btn-primary">
+                        <i>🛍️</i> Visitar
+                    </a>
+                </div>
+            </div>
+        </div>    
+        
+        <!-- Projetos Criativos -->
+        <div class="project-card" data-category="creative">
+            <div class="project-image">
+                <div class="game-icon">🪐</div>
+                <h3>Sistema Solar</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Simulação interativa do sistema solar com informações detalhadas</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Animações CSS</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/segundosistemasolar.html" target="_blank" class="btn-primary">
+                        <i>🌌</i> Explorar
+                    </a>
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/s2.html" target="_blank" class="btn-secondary">
+                        <i>🔭</i> Versão 2
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="creative">
+            <div class="project-image">
+                <div class="game-icon">🌀</div>
+                <h3>Black Hole</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Simulação visual de um buraco negro com efeitos gravitacionais</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Efeitos Visuais</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/blackhole.html" target="_blank" class="btn-primary">
+                        <i>🌀</i> Ver Efeito
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Aprendizado -->
+        <div class="project-card" data-category="learning">
+            <div class="project-image">
+                <div class="game-icon">📚</div>
+                <h3>Primeiros Códigos</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Meus primeiros experimentos com HTML, CSS e JavaScript</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Fundamentos</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/Primeiros-codigos/" target="_blank" class="btn-primary">
+                        <i>🚀</i> Ver Projetos
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="learning">
+            <div class="project-image">
+                <div class="game-icon">🎨</div>
+                <h3>Módulo 2 - HTML/CSS</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Conjunto de exercícios e projetos do módulo 2 de HTML/CSS</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">Flexbox</span>
+                    <span class="tag">Grid</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/" target="_blank" class="btn-primary">
+                        <i>📖</i> Ver Exercícios
+                    </a>
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/index2.html" target="_blank" class="btn-secondary">
+                        <i>📄</i> Página 2
+                    </a>
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/index3.html" target="_blank" class="btn-secondary">
+                        <i>📄</i> Página 3
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card" data-category="web">
+            <div class="project-image">
+                <div class="game-icon">📱</div>
+                <h3>Landing Pages</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Páginas web responsivas com diferentes layouts e designs</p>
+                <div class="project-tags">
+                    <span class="tag">HTML5</span>
+                    <span class="tag">CSS3</span>
+                    <span class="tag">Responsivo</span>
+                    <span class="tag">UI Design</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/index6.html" target="_blank" class="btn-primary">
+                        <i>🌐</i> Landing Page 1
+                    </a>
+                    <a href="https://jonathasfelipe.github.io/HTML-CSS-modulo-2/index9.html" target="_blank" class="btn-secondary">
+                        <i>🌐</i> Landing Page 2
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Redes Sociais -->
+        <div class="project-card social-card" data-category="creative">
+            <div class="project-image">
+                <div class="game-icon">📺</div>
+                <h3>Canal no YouTube</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Conteúdo sobre desenvolvimento, jogos e projetos pessoais</p>
+                <div class="project-tags">
+                    <span class="tag">Conteúdo</span>
+                    <span class="tag">Tutoriais</span>
+                    <span class="tag">Comunidade</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://www.youtube.com/@YSKBR" target="_blank" class="btn-primary youtube">
+                        <i>▶️</i> Inscrever-se
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="project-card social-card" data-category="creative">
+            <div class="project-image">
+                <div class="game-icon">📸</div>
+                <h3>Instagram</h3>
+            </div>
+            <div class="project-content">
+                <p class="project-description">Compartilhamento do dia a dia e progresso dos projetos</p>
+                <div class="project-tags">
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Progresso</span>
+                    <span class="tag">Networking</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://www.instagram.com/eujonathasfelipe/?__pwa=1" target="_blank" class="btn-primary instagram">
+                        <i>📷</i> Seguir
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="portfolio-stats">
+    <div class="stat-item">
+        <div class="stat-icon">
+            <i>🚀</i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">Projetos Publicados</div>
+            <div class="stat-desc">Todos funcionais e acessíveis online</div>
+        </div>
+    </div>
+    
+    <div class="stat-item">
+        <div class="stat-icon">
+            <i>🏷️</i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Categorias Diferentes</div>
+            <div class="stat-desc">Jogos, Web Apps, Criativos & Aprendizado</div>
+        </div>
+    </div>
+    
+    <div class="stat-item">
+        <div class="stat-icon">
+            <i>🌐</i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Disponível 24/7</div>
+            <div class="stat-desc">Hosteado no GitHub Pages</div>
+        </div>
+    </div>
+    
+    <div class="stat-item">
+        <div class="stat-icon">
+            <i>📈</i>
+        </div>
+        <div class="stat-content">
+            <div class="stat-number">+5</div>
+            <div class="stat-label">Novos em Desenvolvimento</div>
+            <div class="stat-desc">Portfólio em constante evolução</div>
+        </div>
+    </div>
+</div>
+</section>          
         </div>
         
         <footer>
-            <p>Atualizado em Maio de 2025</p>
+            <p>Atualizado em Maio de 2025 | Portfólio em constante evolução</p>
         </footer>
     </div>
 
@@ -600,8 +1632,76 @@
                 profileImg.style.display = 'none';
                 fallback.style.display = 'flex';
             }
+            
+            // Anima as barras de progresso quando a página carrega
+            setTimeout(() => {
+                const progressBars = document.querySelectorAll('.skill-progress');
+                progressBars.forEach(bar => {
+                    const currentWidth = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = currentWidth;
+                    }, 100);
+                });
+            }, 500);
         });
+        // Sistema de filtros para o portfólio
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Remove classe active de todos os botões
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Adiciona classe active ao botão clicado
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Filtra os projetos
+            projectCards.forEach(card => {
+                if (filterValue === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    const category = card.getAttribute('data-category');
+                    if (category === filterValue) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Adiciona animação suave
+            setTimeout(() => {
+                projectCards.forEach(card => {
+                    card.style.transition = 'opacity 0.3s ease';
+                    if (card.style.display === 'none') {
+                        card.style.opacity = '0';
+                    } else {
+                        card.style.opacity = '1';
+                    }
+                });
+            }, 10);
+        });
+    });
+    
+    // Animação inicial dos cards
+    setTimeout(() => {
+        projectCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    }, 300);
+});
     </script>
 </body>
-
 </html>
